@@ -1,0 +1,44 @@
+services:
+  # 1. React Web Static Site
+  - type: web
+    name: sk-markethub-web
+    runtime: static
+    buildCommand: cd web && npm install && npm run build
+    staticPublishPath: ./web/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        value: https://sk-markethub-backend.onrender.com/api
+
+  # 2. Spring Boot Backend Web Service
+  - type: web
+    name: sk-markethub-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://skmarkethub-prod-db:3306/sk_markethub_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      - key: SPRING_DATASOURCE_USERNAME
+        value: skmarket
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: KAFKA_BOOTSTRAP_SERVERS
+        value: localhost:9092
+      - key: MAIL_HOST
+        value: smtp.gmail.com
+      - key: MAIL_PORT
+        value: "587"
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false

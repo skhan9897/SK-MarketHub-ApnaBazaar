@@ -1,0 +1,93 @@
+version: '3.8'
+
+networks:
+  skmarkethub-net:
+    driver: bridge
+
+volumes:
+  mysql_prod_data:
+    driver: local
+  caddy_data:
+    driver: local
+  caddy_config:
+    driver: local
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: skmarkethub-prod-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-sk_markethub_db}
+      MYSQL_USER: ${MYSQL_USER:-skmarket}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-skmarket123}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root123}
+    networks:
+      - skmarkethub-net
+    volumes:
+      - mysql_prod_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-root123}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: skmarkethub-prod-backend
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-sk_markethub_db}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-skmarket}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-skmarket123}
+      JWT_SECRET: ${JWT_SECRET:-9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f9a8b}
+    networks:
+      - skmarkethub-net
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: skmarkethub-prod-web
+    restart: always
+    depends_on:
+      - backend
+    networks:
+      - skmarkethub-net
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: skmarkethub-prod-caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:-skmarkethub.duckdns.org}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - skmarkethub-net
+    depends_on:
+      - web
+      - backend
+
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: skmarkethub-prod-duckdns
+    restart: always
+    environment:
+      SUBDOMAINS: ${DUCKDNS_SUBDOMAINS:-skmarkethub}
+      TOKEN: ${DUCKDNS_TOKEN:-place_token_here}
+      UPDATE_IP: ipv4
+      LOG_FILE: "false"
+    networks:
+      - skmarkethub-net

@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: sk-markethub-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Root_Password_2026!
+      MYSQL_DATABASE: sk_markethub_db
+      MYSQL_USER: skmarket
+      MYSQL_PASSWORD: ChangeThis_User_2026!
+    ports:
+      - "3307:3306"
+    volumes:
+      - skmarkethub_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: sk-markethub-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/sk_markethub_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      SPRING_DATASOURCE_USERNAME: skmarket
+      SPRING_DATASOURCE_PASSWORD: ChangeThis_User_2026!
+      SK_MARKETHUB_JWT_SECRET: c2stbWFya2V0aHViLXNlY3JldC1qd3Qta2V5LTIwMjYtc2VjdXJlLXNlY3JldC1rZXk=
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: sk-markethub-web
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  skmarkethub_mysql_data:

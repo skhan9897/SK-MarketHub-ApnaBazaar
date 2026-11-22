@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#E7B85C</color>
+    <color name="accent_blue">#3B82F6</color>
+    <color name="background">#F8F7F3</color>
+    <color name="border">#E2E8F0</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="danger">#D94B4B</color>
+    <color name="gold_metallic">#D4AF37</color>
+    <color name="gold_soft">#F5D994</color>
+    <color name="primary">#080B14</color>
+    <color name="primary_dark">#080B14</color>
+    <color name="primary_slate">#101B35</color>
+    <color name="success">#23865B</color>
+    <color name="support_purple">#8B5CF6</color>
+    <color name="text_primary">#202938</color>
+    <color name="text_secondary">#B9C2D1</color>
+    <color name="warning">#F59E0B</color>
+    <dimen name="badge_corner_radius">20dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="button_height">50dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <string name="app_name">SK-MarketHub</string>
+    <string name="app_tagline">SHOP SMART. LIVE BETTER.</string>
+    <style name="Theme.SKMarketHub" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+    </style>
+    <style name="Theme.SKMarketHub.NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@color/primary_dark</item>
+    </style>
+</resources>
