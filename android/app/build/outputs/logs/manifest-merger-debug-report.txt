@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-39:12
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Sajid Khan\.gradle\caches\transforms-3\2b09c2cd4192fe4b7b686a651ae8eff3\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Sajid Khan\.gradle\caches\transforms-3\80bc2211690f56e6063d66d7e4cf0117\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\Sajid Khan\.gradle\caches\transforms-3\dcc78b2f4a3d879e4e36052f1930563b\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -69,9 +69,17 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:6:5-79
 	android:name
 		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:7:5-75
+	android:name
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:7:22-72
+uses-permission#android.permission.READ_PHONE_NUMBERS
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:8:5-77
+	android:name
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:8:22-74
 application
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:8:5-37:19
-INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:8:5-37:19
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:10:5-39:19
+INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:10:5-39:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Sajid Khan\.gradle\caches\transforms-3\2b09c2cd4192fe4b7b686a651ae8eff3\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Sajid Khan\.gradle\caches\transforms-3\2b09c2cd4192fe4b7b686a651ae8eff3\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Sajid Khan\.gradle\caches\transforms-3\80bc2211690f56e6063d66d7e4cf0117\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -95,83 +103,83 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Sajid Khan\.gradle
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.9.0] C:\Users\Sajid Khan\.gradle\caches\transforms-3\75919e89ab9acfe92b320b18b5eba894\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:14:9-35
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:13:9-41
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:12:9-63
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:14:9-63
 	tools:targetApi
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:17:9-29
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:19:9-29
 	android:icon
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:11:9-58
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:13:9-58
 	android:allowBackup
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:10:9-35
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:15:9-49
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:17:9-49
 	android:usesCleartextTraffic
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:16:9-44
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:18:9-44
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:9:9-47
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:11:9-47
 activity#com.sk.markethub.ui.splash.SplashActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:19:9-27:20
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:21:9-29:20
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:21:13-36
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:23:13-36
 	android:theme
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:22:13-65
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:24:13-65
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:20:13-53
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:22:13-53
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:23:13-26:29
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:25:13-28:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:24:17-69
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:26:17-69
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:24:25-66
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:26:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:27:27-74
 activity#com.sk.markethub.ui.auth.AuthActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:29:9-83
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:9-83
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:29:56-80
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:56-80
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:29:19-55
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:19-55
 activity#com.sk.markethub.ui.main.MainActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:30:9-83
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:9-83
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:30:56-80
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:56-80
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:30:19-55
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:19-55
 activity#com.sk.markethub.ui.catalog.ProductDetailActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:9-95
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:9-95
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:68-92
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:68-92
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:31:19-67
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:19-67
 activity#com.sk.markethub.ui.checkout.CheckoutActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:9-91
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:9-91
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:64-88
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:64-88
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:32:19-63
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:19-63
 activity#com.sk.markethub.ui.seller.SellerDashboardActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:9-96
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:9-96
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:69-93
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:69-93
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:33:19-68
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:19-68
 activity#com.sk.markethub.ui.admin.AdminActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:9-85
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:36:9-85
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:58-82
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:36:58-82
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:34:19-57
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:36:19-57
 activity#com.sk.markethub.ui.support.SupportActivity
-ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:9-89
+ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:37:9-89
 	android:exported
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:62-86
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:37:62-86
 	android:name
-		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:35:19-61
+		ADDED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml:37:19-61
 uses-sdk
 INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Sajid Khan\SK-MarketHub\android\app\src\main\AndroidManifest.xml

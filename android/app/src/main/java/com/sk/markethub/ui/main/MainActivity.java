@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 .setTitle("Update Available: v" + versionName)
                                 .setMessage(releaseNotes != null ? releaseNotes : "A new version of SK-MarketHub is available!")
                                 .setPositiveButton("Update Now", (dialog, which) -> {
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sk-markethub-apnabazaar.onrender.com"));
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sk-markethub-apnabazaar.onrender.com/download-app"));
                                     startActivity(intent);
                                 })
                                 .setNegativeButton("Later", null)

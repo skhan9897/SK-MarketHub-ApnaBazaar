@@ -53,6 +53,11 @@ public class LoginFragment extends Fragment {
                 return;
             }
 
+            if (!com.sk.markethub.util.SimVerificationUtil.isSimNumberMatching(getContext(), mobile)) {
+                Toast.makeText(getContext(), "Mobile number mismatch! Please enter the number of the SIM currently inserted in this phone.", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             viewModel.sendMobileOtp(mobile).observe(getViewLifecycleOwner(), resource -> {
                 if (resource.status == Resource.Status.LOADING) {
                     progressBar.setVisibility(View.VISIBLE);
