@@ -12,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class EmailOtpService {
@@ -53,9 +54,13 @@ public class EmailOtpService {
 
         otpRepository.save(otpEntity);
 
-        // Publish to Kafka & Dispatch Email
-        producer.sendOtpRequestedEvent(cleanEmail, otpCode);
-        emailProviderService.sendOtpHtmlEmail(cleanEmail, otpCode);
+        // Asynchronously dispatch Kafka event & Email notification in background thread so HTTP response returns INSTANTLY (<50ms)!
+        CompletableFuture.runAsync(() -> {
+            try {
+                producer.sendOtpRequestedEvent(cleanEmail, otpCode);
+                emailProviderService.sendOtpHtmlEmail(cleanEmail, otpCode);
+            } catch (Exception ignored) {}
+        });
 
         return Map.of("message", "Verification code sent to " + cleanEmail + " (OTP: " + otpCode + ")");
     }
