@@ -49,7 +49,7 @@ public class TokenManager {
     }
 
     public static String getServerIp() {
-        return prefs != null ? prefs.getString("server_ip", "https://skmarkethub.duckdns.org/api/") : "https://skmarkethub.duckdns.org/api/";
+        return prefs != null ? prefs.getString("server_ip", "https://sk-markethub-apnabazaar.onrender.com/api/") : "https://sk-markethub-apnabazaar.onrender.com/api/";
     }
 
     public static void clear() {
