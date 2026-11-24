@@ -48,6 +48,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         BigDecimal price = p.getSalePrice() != null ? p.getSalePrice() : p.getBasePrice();
         holder.tvPrice.setText("₹" + (price != null ? price.toString() : "0"));
 
+        if (p.getSalePrice() != null && p.getBasePrice() != null && p.getSalePrice().compareTo(p.getBasePrice()) < 0) {
+            BigDecimal diff = p.getBasePrice().subtract(p.getSalePrice());
+            BigDecimal pct = diff.multiply(new BigDecimal(100)).divide(p.getBasePrice(), 0, BigDecimal.ROUND_HALF_UP);
+            holder.tvDiscount.setText(pct.toString() + "% OFF");
+            holder.tvDiscount.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvDiscount.setVisibility(View.GONE);
+        }
+
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) listener.onProductClick(p);
         });
@@ -63,7 +72,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvSku, tvName, tvPrice;
+        TextView tvSku, tvName, tvPrice, tvDiscount;
         Button btnAddToCart;
 
         ViewHolder(@NonNull View itemView) {
@@ -71,6 +80,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             tvSku = itemView.findViewById(R.id.tvProductSku);
             tvName = itemView.findViewById(R.id.tvProductName);
             tvPrice = itemView.findViewById(R.id.tvProductPrice);
+            tvDiscount = itemView.findViewById(R.id.tvProductDiscount);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
         }
     }

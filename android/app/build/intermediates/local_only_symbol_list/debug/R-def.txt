@@ -90,6 +90,7 @@ id tvOrderNumber
 id tvOrderStatus
 id tvOrderTotal
 id tvOrderTracking
+id tvProductDiscount
 id tvProductName
 id tvProductPrice
 id tvProductSku

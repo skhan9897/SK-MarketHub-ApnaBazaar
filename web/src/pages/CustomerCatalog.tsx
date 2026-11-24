@@ -245,6 +245,7 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
               {products.map((p: Product) => {
                 const effectivePrice = p.salePrice || p.basePrice;
                 const hasDiscount = p.salePrice && p.salePrice < p.basePrice;
+                const discountPercent = hasDiscount ? Math.round(((p.basePrice - p.salePrice!) / p.basePrice) * 100) : 0;
 
                 return (
                   <div
@@ -261,6 +262,12 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                       border: '1px solid #f1f5f9'
                     }}
                   >
+                    {hasDiscount && (
+                      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#E7B85C', color: '#14243C', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '12px', letterSpacing: '0.5px' }}>
+                        {discountPercent}% OFF
+                      </div>
+                    )}
+
                     <button
                       onClick={() => handleToggleWishlist(p)}
                       title="Add to Wishlist"
