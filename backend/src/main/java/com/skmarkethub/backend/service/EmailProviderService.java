@@ -13,6 +13,9 @@ public class EmailProviderService {
     private static final Logger log = LoggerFactory.getLogger(EmailProviderService.class);
     private final JavaMailSender mailSender;
 
+    @org.springframework.beans.factory.annotation.Value("${spring.mail.username:notifications@skmarkethub.com}")
+    private String fromEmail;
+
     public EmailProviderService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
     }
@@ -23,6 +26,7 @@ public class EmailProviderService {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
+            helper.setFrom(fromEmail);
             helper.setTo(toEmail);
             helper.setSubject("SK-MarketHub Verification Code: " + otpCode);
 
