@@ -26,10 +26,10 @@ export const Navbar: React.FC<NavbarProps> = ({
   const hasRole = (role: string) => user?.roles?.includes(role);
 
   return (
-    <header style={{ backgroundColor: '#14243C', color: '#ffffff', boxShadow: '0 2px 10px rgba(0,0,0,0.15)' }}>
+    <header style={{ backgroundColor: '#2874F0', color: '#ffffff', boxShadow: '0 2px 10px rgba(0,0,0,0.12)' }}>
 
       {/* Top Announcement Bar */}
-      <div style={{ backgroundColor: '#203653', color: '#E7B85C', padding: '6px 16px', fontSize: '12px', textAlign: 'center', fontWeight: 600, letterSpacing: '0.5px', borderBottom: '1px solid #2d476c', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+      <div style={{ backgroundColor: '#1751A8', color: '#FFE11B', padding: '6px 16px', fontSize: '12px', textAlign: 'center', fontWeight: 700, letterSpacing: '0.5px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
         <Sparkles size={14} />
         <span>Free Express Delivery on orders above ₹500 | SHOP SMART. LIVE BETTER.</span>
       </div>
@@ -42,18 +42,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => setCurrentTab('catalog')}
           style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
         >
-          <div style={{ backgroundColor: '#E7B85C', borderRadius: '10px', padding: '8px', display: 'flex', boxShadow: '0 2px 8px rgba(231,184,92,0.3)' }}>
-            <ShoppingBag size={24} color="#14243C" />
+          <div style={{ backgroundColor: '#FFE11B', borderRadius: '10px', padding: '8px', display: 'flex', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }}>
+            <ShoppingBag size={24} color="#2874F0" />
           </div>
           <div>
             <h1 style={{ fontSize: '20px', fontWeight: '800', margin: 0, color: '#ffffff', letterSpacing: '0.5px' }}>SK-MarketHub</h1>
-            <span style={{ fontSize: '10px', color: '#E7B85C', fontWeight: '700', letterSpacing: '1px' }}>SHOP SMART. LIVE BETTER.</span>
+            <span style={{ fontSize: '10px', color: '#FFE11B', fontWeight: '700', letterSpacing: '1px' }}>SHOP SMART. LIVE BETTER.</span>
           </div>
         </div>
 
         {/* Search Bar */}
-        <div style={{ flex: '1', maxWidth: '450px', position: 'relative' }}>
-          <Search size={18} color="#697386" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
+        <div style={{ flex: '1', maxWidth: '480px', position: 'relative', display: 'flex', alignItems: 'center' }}>
           <input
             type="text"
             placeholder="Search products, brands, categories..."
@@ -61,15 +60,34 @@ export const Navbar: React.FC<NavbarProps> = ({
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%',
-              padding: '10px 14px 10px 42px',
-              borderRadius: '20px',
-              border: '1px solid #203653',
-              backgroundColor: '#0c1626',
-              color: '#ffffff',
+              padding: '10px 48px 10px 16px',
+              borderRadius: '4px',
+              border: 'none',
+              backgroundColor: '#ffffff',
+              color: '#212121',
               fontSize: '14px',
-              outline: 'none'
+              outline: 'none',
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}
           />
+          <button
+            style={{
+              position: 'absolute',
+              right: '2px',
+              top: '2px',
+              bottom: '2px',
+              backgroundColor: '#FFE11B',
+              border: 'none',
+              borderRadius: '2px',
+              padding: '0 12px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Search size={18} color="#2874F0" />
+          </button>
         </div>
 
         {/* Navigation Actions */}
@@ -78,14 +96,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => setCurrentTab('catalog')}
             style={{
-              background: currentTab === 'catalog' ? '#203653' : 'transparent',
+              background: currentTab === 'catalog' ? '#1751A8' : 'transparent',
               border: 'none',
-              color: currentTab === 'catalog' ? '#E7B85C' : '#ffffff',
+              color: currentTab === 'catalog' ? '#FFE11B' : '#ffffff',
               padding: '8px 14px',
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '14px',
-              fontWeight: 600
+              fontWeight: 700
             }}
           >
             Catalog
@@ -94,20 +112,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => setCurrentTab('download-app')}
             style={{
-              background: currentTab === 'download-app' ? '#203653' : 'transparent',
+              background: currentTab === 'download-app' ? '#1751A8' : 'transparent',
               border: 'none',
-              color: currentTab === 'download-app' ? '#E7B85C' : '#ffffff',
+              color: currentTab === 'download-app' ? '#FFE11B' : '#ffffff',
               padding: '8px 14px',
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '14px',
-              fontWeight: 600,
+              fontWeight: 700,
               display: 'flex',
               alignItems: 'center',
               gap: '6px'
             }}
           >
-            <Smartphone size={16} color="#E7B85C" />
+            <Smartphone size={16} color="#FFE11B" />
             <span>Android App</span>
           </button>
 
@@ -116,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => setCurrentTab('wishlist')}
                 style={{
-                  background: currentTab === 'wishlist' ? '#203653' : 'transparent',
+                  background: currentTab === 'wishlist' ? '#1751A8' : 'transparent',
                   border: 'none',
                   color: '#ffffff',
                   padding: '8px 12px',
@@ -128,10 +146,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   gap: '6px'
                 }}
               >
-                <Heart size={18} color="#D94B4B" />
+                <Heart size={18} color="#ffffff" />
                 <span>Wishlist</span>
                 {wishlistCount > 0 && (
-                  <span style={{ backgroundColor: '#D94B4B', color: '#fff', fontSize: '10px', borderRadius: '10px', padding: '2px 6px', fontWeight: 'bold' }}>
+                  <span style={{ backgroundColor: '#FFE11B', color: '#2874F0', fontSize: '10px', borderRadius: '10px', padding: '2px 6px', fontWeight: 'bold' }}>
                     {wishlistCount}
                   </span>
                 )}
@@ -140,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => setCurrentTab('cart')}
                 style={{
-                  background: currentTab === 'cart' ? '#203653' : 'transparent',
+                  background: currentTab === 'cart' ? '#1751A8' : 'transparent',
                   border: 'none',
                   color: '#ffffff',
                   padding: '8px 12px',
@@ -151,10 +169,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   gap: '6px'
                 }}
               >
-                <ShoppingCart size={18} color="#E7B85C" />
+                <ShoppingCart size={18} color="#FFE11B" />
                 <span>Cart</span>
                 {cartCount > 0 && (
-                  <span style={{ backgroundColor: '#E7B85C', color: '#14243C', fontSize: '10px', borderRadius: '10px', padding: '2px 6px', fontWeight: 'bold' }}>
+                  <span style={{ backgroundColor: '#FFE11B', color: '#2874F0', fontSize: '10px', borderRadius: '10px', padding: '2px 6px', fontWeight: 'bold' }}>
                     {cartCount}
                   </span>
                 )}
@@ -163,14 +181,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => setCurrentTab('orders')}
                 style={{
-                  background: currentTab === 'orders' ? '#203653' : 'transparent',
+                  background: currentTab === 'orders' ? '#1751A8' : 'transparent',
                   border: 'none',
                   color: '#ffffff',
                   padding: '8px 12px',
                   borderRadius: '6px',
                   cursor: 'pointer',
                   fontSize: '14px',
-                  fontWeight: 500
+                  fontWeight: 600
                 }}
               >
                 My Orders
@@ -182,7 +200,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setCurrentTab('seller')}
               style={{
-                background: currentTab === 'seller' ? '#186041' : '#23865B',
+                background: currentTab === 'seller' ? '#2e7d32' : '#388E3C',
                 border: 'none',
                 color: '#ffffff',
                 padding: '8px 14px',
@@ -192,7 +210,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '13px',
-                fontWeight: 600
+                fontWeight: 700
               }}
             >
               <Store size={15} />
@@ -204,9 +222,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setCurrentTab('admin')}
               style={{
-                background: currentTab === 'admin' ? '#b88c3a' : '#E7B85C',
+                background: currentTab === 'admin' ? '#e6c310' : '#FFE11B',
                 border: 'none',
-                color: '#14243C',
+                color: '#2874F0',
                 padding: '8px 14px',
                 borderRadius: '6px',
                 cursor: 'pointer',
@@ -214,7 +232,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '13px',
-                fontWeight: 700
+                fontWeight: 800
               }}
             >
               <Shield size={15} />
@@ -247,8 +265,8 @@ export const Navbar: React.FC<NavbarProps> = ({
           {user ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginLeft: '6px' }}>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontSize: '13px', fontWeight: 600 }}>{user.firstName}</div>
-                <div style={{ fontSize: '10px', color: '#94a3b8' }}>{user.email}</div>
+                <div style={{ fontSize: '13px', fontWeight: 700 }}>{user.firstName}</div>
+                <div style={{ fontSize: '10px', color: '#e0e0e0' }}>{user.email}</div>
               </div>
               <button
                 onClick={onLogout}
@@ -270,21 +288,22 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               onClick={() => setCurrentTab('auth')}
               style={{
-                background: '#E7B85C',
-                color: '#14243C',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '6px',
+                background: '#ffffff',
+                color: '#2874F0',
+                border: '1px solid #ffffff',
+                padding: '8px 20px',
+                borderRadius: '4px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
                 fontSize: '14px',
-                fontWeight: 700
+                fontWeight: 800,
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
               }}
             >
               <UserIcon size={16} />
-              Sign In
+              Login
             </button>
           )}
         </div>

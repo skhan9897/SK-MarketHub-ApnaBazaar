@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SK-MarketHub"
-            android:textColor="@color/accent"
+            android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/app_tagline"
-            android:textColor="@color/gold_soft"
+            android:textColor="@color/accent"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:indeterminateTint="@color/gold_metallic" />
+            android:indeterminateTint="@color/accent" />
 
         <TextView
             android:id="@+id/tvSplashStatus"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Initializing SK-MarketHub..."
-            android:textColor="@color/text_secondary"
+            android:textColor="#E0E0E0"
             android:textSize="12sp" />
     </LinearLayout>
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
-    app:cardCornerRadius="12dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="2dp">
 
     <LinearLayout
@@ -22,12 +22,9 @@
                 android:id="@+id/tvProductSku"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/primary"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:textColor="@color/accent"
+                android:background="#E8F0FE"
+                android:padding="3dp"
+                android:textColor="@color/primary"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
@@ -40,12 +37,9 @@
                 android:id="@+id/tvProductDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/accent"
-                android:paddingStart="6dp"
-                android:paddingEnd="6dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp"
-                android:textColor="@color/primary"
+                android:background="@color/success"
+                android:padding="3dp"
+                android:textColor="#FFFFFF"
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone" />
@@ -54,7 +48,7 @@
         <TextView
             android:id="@+id/tvProductName"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="38dp"
             android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:maxLines="2"

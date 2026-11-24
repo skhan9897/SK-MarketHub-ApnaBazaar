@@ -30,21 +30,21 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
 
   const heroBanners = [
     {
-      title: "EXCLUSIVE MARKETPLACE COLLECTION",
-      subtitle: "Up to 70% OFF on Top Tech & Fashion Brands",
-      badge: "LIMITED TIME DEALS",
-      buttonText: "SHOP NEW ARRIVALS"
+      title: "BIG SAVINGS DAYS ARE LIVE!",
+      subtitle: "Up to 70% OFF on Top Electronics, Smartphones & Fashion Brands",
+      badge: "FESTIVE SALE LIVE",
+      buttonText: "SHOP DEALS NOW"
     },
     {
-      title: "NEXT-GEN SMARTPHONES & ACCESSORIES",
-      subtitle: "Verified Official Sellers | Free Express Shipping",
-      badge: "FESTIVE SALE LIVE",
+      title: "NEXT-GEN SMARTPHONES & LAPTOPS",
+      subtitle: "Verified Official Sellers | Free Express Shipping & No-Cost EMI",
+      badge: "EXCLUSIVE LAUNCH",
       buttonText: "EXPLORE GADGETS"
     },
     {
-      title: "ELEVATE YOUR WARDROBE & HOME",
-      subtitle: "Premium Quality Guaranteed | Easy 7-Day Returns",
-      badge: "TRENDING LIFESTYLE",
+      title: "ELEVATE YOUR LIFESTYLE & HOME",
+      subtitle: "Premium Quality Guaranteed | Easy 7-Day Returns & Instant Refunds",
+      badge: "TRENDING SELECTION",
       buttonText: "DISCOVER LIFESTYLE"
     }
   ];
@@ -130,10 +130,10 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
   };
 
   return (
-    <div style={{ backgroundColor: '#F8F7F3', minHeight: '100vh', paddingBottom: '60px' }}>
+    <div style={{ backgroundColor: '#F1F3F6', minHeight: '100vh', paddingBottom: '60px' }}>
 
       {/* Top Horizontal Category Icon Bar */}
-      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', padding: '12px 16px', marginBottom: '20px' }}>
+      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e0e0e0', boxShadow: '0 2px 4px rgba(0,0,0,0.04)', padding: '10px 16px', marginBottom: '16px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '4px', alignItems: 'center' }}>
           {categoryIcons.map((item, idx) => {
             const Icon = item.icon;
@@ -147,20 +147,20 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '8px 16px',
+                  padding: '8px 18px',
                   borderRadius: '20px',
-                  border: isSelected ? '2px solid #E7B85C' : '1px solid #e2e8f0',
-                  backgroundColor: isSelected ? '#14243C' : '#f8fafc',
-                  color: isSelected ? '#E7B85C' : '#334155',
+                  border: isSelected ? '2px solid #2874F0' : '1px solid #e0e0e0',
+                  backgroundColor: isSelected ? '#2874F0' : '#ffffff',
+                  color: isSelected ? '#ffffff' : '#212121',
                   fontWeight: 700,
                   fontSize: '13px',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
-                  boxShadow: isSelected ? '0 2px 8px rgba(231,184,92,0.3)' : 'none',
+                  boxShadow: isSelected ? '0 2px 8px rgba(40,116,240,0.3)' : 'none',
                   transition: 'all 0.2s ease'
                 }}
               >
-                <Icon size={16} color={isSelected ? '#E7B85C' : '#14243C'} />
+                <Icon size={16} color={isSelected ? '#FFE11B' : '#2874F0'} />
                 <span>{item.name}</span>
               </button>
             );
@@ -170,38 +170,35 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
 
       {/* Hero Showcase Banner Carousel */}
       {!searchQuery && !selectedCategory && !selectedBrand && (
-        <div style={{ maxWidth: '1280px', margin: '0 auto 28px auto', padding: '0 16px' }}>
-          <div style={{ backgroundColor: '#14243C', color: '#ffffff', borderRadius: '16px', padding: '40px', position: 'relative', overflow: 'hidden', borderBottom: '4px solid #E7B85C', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
-
-            {/* Background Radial Glow */}
-            <div style={{ position: 'absolute', right: '-50px', top: '-50px', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(231,184,92,0.2) 0%, rgba(20,36,60,0) 70%)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1280px', margin: '0 auto 20px auto', padding: '0 16px' }}>
+          <div style={{ backgroundColor: '#2874F0', color: '#ffffff', borderRadius: '8px', padding: '36px', position: 'relative', overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
 
             <div style={{ maxWidth: '650px', position: 'relative', zIndex: 2 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#203653', color: '#E7B85C', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 800, marginBottom: '16px', letterSpacing: '1px' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#1751A8', color: '#FFE11B', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 800, marginBottom: '12px', letterSpacing: '1px' }}>
                 <Flame size={14} /> {heroBanners[heroIndex].badge}
               </div>
-              <h1 style={{ fontSize: '32px', fontWeight: 800, margin: '0 0 12px 0', letterSpacing: '0.5px', lineHeight: 1.2 }}>
+              <h1 style={{ fontSize: '32px', fontWeight: 800, margin: '0 0 10px 0', letterSpacing: '0.5px', lineHeight: 1.2 }}>
                 {heroBanners[heroIndex].title}
               </h1>
-              <p style={{ fontSize: '16px', color: '#B9C2D1', margin: '0 0 24px 0' }}>
+              <p style={{ fontSize: '15px', color: '#e0e0e0', margin: '0 0 20px 0' }}>
                 {heroBanners[heroIndex].subtitle}
               </p>
 
               <button
                 onClick={() => window.scrollTo({ top: 400, behavior: 'smooth' })}
                 style={{
-                  backgroundColor: '#E7B85C',
-                  color: '#14243C',
+                  backgroundColor: '#FFE11B',
+                  color: '#2874F0',
                   border: 'none',
                   padding: '12px 24px',
-                  borderRadius: '8px',
+                  borderRadius: '4px',
                   fontWeight: 800,
                   fontSize: '14px',
                   cursor: 'pointer',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  boxShadow: '0 4px 12px rgba(231,184,92,0.4)'
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.15)'
                 }}
               >
                 <span>{heroBanners[heroIndex].buttonText}</span>
@@ -219,7 +216,7 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                     width: i === heroIndex ? '20px' : '8px',
                     height: '8px',
                     borderRadius: '4px',
-                    backgroundColor: i === heroIndex ? '#E7B85C' : '#203653',
+                    backgroundColor: i === heroIndex ? '#FFE11B' : '#1751A8',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease'
                   }}
@@ -232,29 +229,29 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
       )}
 
       {/* Main Content Area */}
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px', display: 'flex', gap: '24px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px', display: 'flex', gap: '20px' }}>
 
         {/* Sidebar Filters */}
-        <div style={{ width: '250px', flexShrink: 0, backgroundColor: '#ffffff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', alignSelf: 'flex-start', border: '1px solid #e2e8f0' }}>
+        <div style={{ width: '250px', flexShrink: 0, backgroundColor: '#ffffff', padding: '20px', borderRadius: '8px', boxShadow: '0 1px 4px rgba(0,0,0,0.08)', alignSelf: 'flex-start', border: '1px solid #e0e0e0' }}>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #e2e8f0', paddingBottom: '12px', marginBottom: '16px' }}>
-            <Filter size={18} color="#14243C" />
-            <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0, color: '#14243C' }}>Filters</h3>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #e0e0e0', paddingBottom: '12px', marginBottom: '16px' }}>
+            <Filter size={18} color="#2874F0" />
+            <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0, color: '#212121' }}>Filters</h3>
           </div>
 
           {/* Categories */}
           <div style={{ marginBottom: '20px' }}>
-            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#202938', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Categories</h4>
+            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#212121', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Categories</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <button
                 onClick={() => setSelectedCategory(undefined)}
                 style={{
                   textAlign: 'left',
                   padding: '8px 12px',
-                  borderRadius: '6px',
+                  borderRadius: '4px',
                   border: 'none',
-                  background: selectedCategory === undefined ? '#14243C' : 'transparent',
-                  color: selectedCategory === undefined ? '#E7B85C' : '#697386',
+                  background: selectedCategory === undefined ? '#2874F0' : 'transparent',
+                  color: selectedCategory === undefined ? '#ffffff' : '#878787',
                   fontWeight: selectedCategory === undefined ? 700 : 500,
                   cursor: 'pointer',
                   fontSize: '13px'
@@ -269,10 +266,10 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                   style={{
                     textAlign: 'left',
                     padding: '8px 12px',
-                    borderRadius: '6px',
+                    borderRadius: '4px',
                     border: 'none',
-                    background: selectedCategory === c.id ? '#14243C' : 'transparent',
-                    color: selectedCategory === c.id ? '#E7B85C' : '#697386',
+                    background: selectedCategory === c.id ? '#2874F0' : 'transparent',
+                    color: selectedCategory === c.id ? '#ffffff' : '#878787',
                     fontWeight: selectedCategory === c.id ? 700 : 500,
                     cursor: 'pointer',
                     fontSize: '13px'
@@ -286,17 +283,17 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
 
           {/* Brands */}
           <div>
-            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#202938', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Brands</h4>
+            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#212121', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Brands</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <button
                 onClick={() => setSelectedBrand(undefined)}
                 style={{
                   textAlign: 'left',
                   padding: '8px 12px',
-                  borderRadius: '6px',
+                  borderRadius: '4px',
                   border: 'none',
-                  background: selectedBrand === undefined ? '#203653' : 'transparent',
-                  color: selectedBrand === undefined ? '#ffffff' : '#697386',
+                  background: selectedBrand === undefined ? '#1751A8' : 'transparent',
+                  color: selectedBrand === undefined ? '#ffffff' : '#878787',
                   fontWeight: selectedBrand === undefined ? 700 : 500,
                   cursor: 'pointer',
                   fontSize: '13px'
@@ -311,10 +308,10 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                   style={{
                     textAlign: 'left',
                     padding: '8px 12px',
-                    borderRadius: '6px',
+                    borderRadius: '4px',
                     border: 'none',
-                    background: selectedBrand === b.id ? '#203653' : 'transparent',
-                    color: selectedBrand === b.id ? '#ffffff' : '#697386',
+                    background: selectedBrand === b.id ? '#1751A8' : 'transparent',
+                    color: selectedBrand === b.id ? '#ffffff' : '#878787',
                     fontWeight: selectedBrand === b.id ? 700 : 500,
                     cursor: 'pointer',
                     fontSize: '13px'
@@ -331,30 +328,30 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
         <div style={{ flex: 1 }}>
 
           {/* Section Header */}
-          <div style={{ backgroundColor: '#ffffff', padding: '16px 20px', borderRadius: '12px', border: '1px solid #e2e8f0', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <div style={{ backgroundColor: '#ffffff', padding: '16px 20px', borderRadius: '8px', border: '1px solid #e0e0e0', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Zap size={20} color="#E7B85C" />
-              <h2 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#14243C' }}>
+              <Zap size={20} color="#388E3C" />
+              <h2 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#212121' }}>
                 Deals of the Day ({products.length})
               </h2>
             </div>
-            <span style={{ fontSize: '12px', fontWeight: 700, color: '#23865B', backgroundColor: '#ecfdf5', padding: '4px 10px', borderRadius: '12px' }}>
-              Verified Inventory
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#388E3C', backgroundColor: '#e8f5e9', padding: '4px 10px', borderRadius: '12px' }}>
+              Assured Quality
             </span>
           </div>
 
           {loading ? (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '16px' }}>
               {[1, 2, 3, 4, 5, 6].map((n) => <ProductSkeleton key={n} />)}
             </div>
           ) : products.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+            <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#ffffff', borderRadius: '8px', border: '1px solid #e0e0e0' }}>
               <Tag size={40} color="#cbd5e1" style={{ marginBottom: '12px' }} />
-              <h3 style={{ fontSize: '16px', color: '#202938', margin: 0 }}>No products found</h3>
-              <p style={{ fontSize: '13px', color: '#697386' }}>Try adjusting your search terms or category filters.</p>
+              <h3 style={{ fontSize: '16px', color: '#212121', margin: 0 }}>No products found</h3>
+              <p style={{ fontSize: '13px', color: '#878787' }}>Try adjusting your search terms or category filters.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '16px' }}>
               {products.map((p: Product) => {
                 const effectivePrice = p.salePrice || p.basePrice;
                 const hasDiscount = p.salePrice && p.salePrice < p.basePrice;
@@ -365,19 +362,19 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                     key={p.id}
                     style={{
                       backgroundColor: '#ffffff',
-                      borderRadius: '12px',
+                      borderRadius: '8px',
                       padding: '16px',
-                      boxShadow: '0 2px 10px rgba(0,0,0,0.04)',
+                      boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
                       position: 'relative',
-                      border: '1px solid #f1f5f9'
+                      border: '1px solid #f0f0f0'
                     }}
                   >
                     {/* Discount Badge */}
                     {hasDiscount && (
-                      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#E7B85C', color: '#14243C', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '12px', letterSpacing: '0.5px', boxShadow: '0 2px 6px rgba(231,184,92,0.4)' }}>
+                      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#388E3C', color: '#ffffff', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '2px', letterSpacing: '0.5px' }}>
                         {discountPercent}% OFF
                       </div>
                     )}
@@ -390,31 +387,35 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                         position: 'absolute',
                         top: '12px',
                         right: '12px',
-                        background: '#f8fafc',
-                        border: '1px solid #e2e8f0',
+                        background: '#ffffff',
+                        border: '1px solid #e0e0e0',
                         borderRadius: '50%',
                         padding: '6px',
                         cursor: 'pointer',
-                        display: 'flex'
+                        display: 'flex',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.08)'
                       }}
                     >
                       <Heart size={16} color="#D94B4B" />
                     </button>
 
                     {/* Image Container */}
-                    <div style={{ width: '100%', height: '140px', backgroundColor: '#f8fafc', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
+                    <div style={{ width: '100%', height: '140px', backgroundColor: '#f8fafc', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
                       <ShoppingBag size={48} color="#cbd5e1" />
                     </div>
 
                     {/* Product Info */}
                     <div>
-                      <span style={{ fontSize: '10px', fontWeight: 800, color: '#E7B85C', textTransform: 'uppercase', letterSpacing: '0.5px', backgroundColor: '#14243C', padding: '2px 6px', borderRadius: '4px' }}>SKU: {p.sku}</span>
-                      <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#202938', margin: '8px 0 8px 0', height: '40px', overflow: 'hidden' }}>{p.name}</h3>
+                      <span style={{ fontSize: '10px', fontWeight: 800, color: '#2874F0', textTransform: 'uppercase', letterSpacing: '0.5px', backgroundColor: '#e8f0fe', padding: '2px 6px', borderRadius: '2px' }}>SKU: {p.sku}</span>
+                      <h3 style={{ fontSize: '14px', fontWeight: 700, color: '#212121', margin: '8px 0 8px 0', height: '38px', overflow: 'hidden' }}>{p.name}</h3>
 
                       <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '14px' }}>
-                        <span style={{ fontSize: '18px', fontWeight: 800, color: '#23865B' }}>₹{effectivePrice.toLocaleString('en-IN')}</span>
+                        <span style={{ fontSize: '18px', fontWeight: 800, color: '#212121' }}>₹{effectivePrice.toLocaleString('en-IN')}</span>
                         {hasDiscount && (
-                          <span style={{ fontSize: '13px', color: '#697386', textDecoration: 'line-through' }}>₹{p.basePrice.toLocaleString('en-IN')}</span>
+                          <span style={{ fontSize: '13px', color: '#878787', textDecoration: 'line-through' }}>₹{p.basePrice.toLocaleString('en-IN')}</span>
+                        )}
+                        {hasDiscount && (
+                          <span style={{ fontSize: '12px', color: '#388E3C', fontWeight: 700 }}>{discountPercent}% off</span>
                         )}
                       </div>
                     </div>
@@ -426,17 +427,18 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                       style={{
                         width: '100%',
                         padding: '10px',
-                        backgroundColor: '#14243C',
-                        color: '#E7B85C',
+                        backgroundColor: '#2874F0',
+                        color: '#FFE11B',
                         border: 'none',
-                        borderRadius: '8px',
-                        fontWeight: 700,
+                        borderRadius: '4px',
+                        fontWeight: 800,
                         fontSize: '13px',
                         cursor: 'pointer',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '6px'
+                        gap: '6px',
+                        boxShadow: '0 2px 4px rgba(40,116,240,0.2)'
                       }}
                     >
                       <ShoppingCart size={16} />
@@ -451,13 +453,13 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
       </div>
 
       {/* Footer */}
-      <footer style={{ backgroundColor: '#14243C', color: '#ffffff', marginTop: '60px', padding: '32px 24px 16px 24px', borderTop: '4px solid #E7B85C' }}>
+      <footer style={{ backgroundColor: '#172A49', color: '#ffffff', marginTop: '60px', padding: '32px 24px 16px 24px', borderTop: '4px solid #2874F0' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px', borderBottom: '1px solid #203653', paddingBottom: '24px' }}>
           <div>
             <h3 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', margin: '0 0 8px 0' }}>SK-MarketHub</h3>
-            <p style={{ fontSize: '12px', color: '#E7B85C', fontWeight: 700, margin: 0 }}>SHOP SMART. LIVE BETTER.</p>
+            <p style={{ fontSize: '12px', color: '#FFE11B', fontWeight: 700, margin: 0 }}>SHOP SMART. LIVE BETTER.</p>
           </div>
-          <div style={{ fontSize: '12px', color: '#697386' }}>
+          <div style={{ fontSize: '12px', color: '#878787' }}>
             &copy; 2026 SK-MarketHub. All rights reserved. Built with Spring Boot, React, and Native Android.
           </div>
         </div>
