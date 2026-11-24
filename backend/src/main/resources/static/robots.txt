@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /download-app
+Allow: /catalog
+Disallow: /admin/
+Disallow: /seller/
+
+Sitemap: https://skmarkethub.duckdns.org/sitemap.xml
+Sitemap: https://sk-markethub-apnabazaar.onrender.com/sitemap.xml
