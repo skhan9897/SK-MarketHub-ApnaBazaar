@@ -97,6 +97,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
+                .requestMatchers(HttpMethod.GET, "/").permitAll()
                 .requestMatchers("/actuator/health", "/actuator/health/**").permitAll()
 
                 .requestMatchers(HttpMethod.POST,
