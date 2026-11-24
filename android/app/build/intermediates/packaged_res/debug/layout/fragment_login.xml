@@ -12,35 +12,77 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign In to SK-MarketHub"
+            android:text="Mobile OTP Sign In"
             android:textColor="@color/text_primary"
             android:textSize="22sp"
             android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="SHOP SMART. LIVE BETTER."
+            android:textColor="@color/accent"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:hint="Email Address">
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLoginEmail"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_weight="1"
+                android:hint="Mobile Number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLoginMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:text="9897004767" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSendMobileOtp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/primary"
+                android:text="Send OTP"
+                android:textColor="@color/accent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Password">
+            android:hint="6-Digit Verification OTP">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLoginPassword"
+                android:id="@+id/etLoginOtpCode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="number"
+                android:maxLength="6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Full Name (Optional)">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoginFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -48,10 +90,12 @@
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/accent"
-            android:text="Sign In"
+            android:backgroundTint="@color/primary"
+            android:text="Verify &amp; Sign In"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textColor="@color/accent"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <ProgressBar
             android:id="@+id/pbLogin"

@@ -43,6 +43,14 @@ public class AuthViewModel extends ViewModel {
         return repository.verifyOtp(email, otpCode);
     }
 
+    public LiveData<Resource<Map<String, String>>> sendMobileOtp(String mobile) {
+        return repository.sendMobileOtp(mobile);
+    }
+
+    public LiveData<Resource<AuthResponse>> loginWithMobileOtp(String mobile, String otpCode, String firstName) {
+        return repository.loginWithMobileOtp(mobile, otpCode, firstName);
+    }
+
     public LiveData<Resource<Map<String, Object>>> submitSellerApplication(String storeName, String businessName, String gstNumber) {
         return repository.submitSellerApplication(storeName, businessName, gstNumber);
     }

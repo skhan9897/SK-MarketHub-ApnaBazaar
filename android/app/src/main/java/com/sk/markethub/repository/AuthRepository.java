@@ -186,6 +186,54 @@ public class AuthRepository {
         return data;
     }
 
+    public LiveData<Resource<Map<String, String>>> sendMobileOtp(String mobile) {
+        MutableLiveData<Resource<Map<String, String>>> data = new MutableLiveData<>();
+        data.setValue(Resource.loading());
+
+        Map<String, Object> body = Map.of("mobile", mobile);
+        ApiClient.getService().sendMobileOtp(body).enqueue(new Callback<Map<String, String>>() {
+            @Override
+            public void onResponse(Call<Map<String, String>> call, Response<Map<String, String>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    data.setValue(Resource.success(response.body()));
+                } else {
+                    data.setValue(Resource.error("Failed to send OTP to mobile"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Map<String, String>> call, Throwable t) {
+                data.setValue(Resource.error("Network error"));
+            }
+        });
+
+        return data;
+    }
+
+    public LiveData<Resource<AuthResponse>> loginWithMobileOtp(String mobile, String otpCode, String firstName) {
+        MutableLiveData<Resource<AuthResponse>> data = new MutableLiveData<>();
+        data.setValue(Resource.loading());
+
+        Map<String, Object> body = Map.of("mobile", mobile, "otpCode", otpCode, "firstName", firstName != null ? firstName : "");
+        ApiClient.getService().loginWithMobileOtp(body).enqueue(new Callback<AuthResponse>() {
+            @Override
+            public void onResponse(Call<AuthResponse> call, Response<AuthResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    data.setValue(Resource.success(response.body()));
+                } else {
+                    data.setValue(Resource.error("Invalid or expired OTP code"));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AuthResponse> call, Throwable t) {
+                data.setValue(Resource.error("Network error"));
+            }
+        });
+
+        return data;
+    }
+
     public LiveData<Resource<Map<String, Object>>> submitSellerApplication(String storeName, String businessName, String gstNumber) {
         MutableLiveData<Resource<Map<String, Object>>> data = new MutableLiveData<>();
         data.setValue(Resource.loading());

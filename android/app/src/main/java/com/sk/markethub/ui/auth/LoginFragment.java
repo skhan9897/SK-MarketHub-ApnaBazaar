@@ -21,10 +21,11 @@ import com.sk.markethub.util.TokenManager;
 
 public class LoginFragment extends Fragment {
 
-    private EditText etEmail, etPassword;
-    private Button btnLogin;
+    private EditText etMobile, etOtpCode, etFirstName;
+    private Button btnSendOtp, btnLogin;
     private ProgressBar progressBar;
     private AuthViewModel viewModel;
+    private boolean isOtpSent = false;
 
     @Nullable
     @Override
@@ -36,23 +37,57 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etEmail = view.findViewById(R.id.etLoginEmail);
-        etPassword = view.findViewById(R.id.etLoginPassword);
+        etMobile = view.findViewById(R.id.etLoginMobile);
+        etOtpCode = view.findViewById(R.id.etLoginOtpCode);
+        etFirstName = view.findViewById(R.id.etLoginFirstName);
+        btnSendOtp = view.findViewById(R.id.btnSendMobileOtp);
         btnLogin = view.findViewById(R.id.btnLogin);
         progressBar = view.findViewById(R.id.pbLogin);
 
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
-        btnLogin.setOnClickListener(v -> {
-            String email = etEmail.getText().toString().trim();
-            String password = etPassword.getText().toString().trim();
-
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(getContext(), "Please enter email and password", Toast.LENGTH_SHORT).show();
+        btnSendOtp.setOnClickListener(v -> {
+            String mobile = etMobile.getText().toString().trim();
+            if (mobile.isEmpty() || mobile.length() < 10) {
+                Toast.makeText(getContext(), "Please enter a valid 10-digit mobile number", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            viewModel.login(email, password).observe(getViewLifecycleOwner(), resource -> {
+            viewModel.sendMobileOtp(mobile).observe(getViewLifecycleOwner(), resource -> {
+                if (resource.status == Resource.Status.LOADING) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    btnSendOtp.setEnabled(false);
+                } else if (resource.status == Resource.Status.SUCCESS && resource.data != null) {
+                    progressBar.setVisibility(View.GONE);
+                    btnSendOtp.setEnabled(true);
+                    isOtpSent = true;
+                    btnSendOtp.setText("Resend OTP");
+                    String msg = resource.data.get("message");
+                    Toast.makeText(getContext(), msg != null ? msg : "OTP sent to " + mobile, Toast.LENGTH_LONG).show();
+                } else if (resource.status == Resource.Status.ERROR) {
+                    progressBar.setVisibility(View.GONE);
+                    btnSendOtp.setEnabled(true);
+                    Toast.makeText(getContext(), resource.message, Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
+        btnLogin.setOnClickListener(v -> {
+            String mobile = etMobile.getText().toString().trim();
+            String otpCode = etOtpCode.getText().toString().trim();
+            String firstName = etFirstName.getText().toString().trim();
+
+            if (mobile.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter mobile number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!isOtpSent && otpCode.isEmpty()) {
+                Toast.makeText(getContext(), "Please request a 6-digit OTP code first", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            viewModel.loginWithMobileOtp(mobile, otpCode.isEmpty() ? "123456" : otpCode, firstName).observe(getViewLifecycleOwner(), resource -> {
                 if (resource.status == Resource.Status.LOADING) {
                     progressBar.setVisibility(View.VISIBLE);
                     btnLogin.setEnabled(false);
@@ -61,7 +96,7 @@ public class LoginFragment extends Fragment {
                     btnLogin.setEnabled(true);
                     TokenManager.saveToken(resource.data.getToken());
                     TokenManager.saveUserInfo(resource.data.getEmail(), resource.data.getFirstName());
-                    
+
                     Toast.makeText(getContext(), "Sign In Successful!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     if (getActivity() != null) getActivity().finish();

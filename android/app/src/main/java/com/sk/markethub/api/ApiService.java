@@ -33,6 +33,12 @@ public interface ApiService {
     @POST("auth/verify-otp")
     Call<Map<String, String>> verifyOtp(@Body Map<String, Object> body);
 
+    @POST("auth/send-mobile-otp")
+    Call<Map<String, String>> sendMobileOtp(@Body Map<String, Object> body);
+
+    @POST("auth/login-mobile-otp")
+    Call<AuthResponse> loginWithMobileOtp(@Body Map<String, Object> body);
+
     @GET("app/latest")
     Call<Map<String, Object>> getLatestAppRelease();
 

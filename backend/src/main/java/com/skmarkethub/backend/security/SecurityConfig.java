@@ -105,7 +105,9 @@ public class SecurityConfig {
                     "/api/auth/forgot-password",
                     "/api/auth/reset-password",
                     "/api/auth/send-otp",
-                    "/api/auth/verify-otp").permitAll()
+                    "/api/auth/verify-otp",
+                    "/api/auth/send-mobile-otp",
+                    "/api/auth/login-mobile-otp").permitAll()
 
                 .requestMatchers(HttpMethod.GET,
                     "/api/app/latest",

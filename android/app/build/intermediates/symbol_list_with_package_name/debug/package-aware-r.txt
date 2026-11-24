@@ -3204,6 +3204,7 @@ id btnRegSendOtp
 id btnRegister
 id btnRemoveCartItem
 id btnSellerAddProduct
+id btnSendMobileOtp
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3288,8 +3289,9 @@ id etAddressLine
 id etCatalogSearch
 id etCheckoutCoupon
 id etForgotEmail
-id etLoginEmail
-id etLoginPassword
+id etLoginFirstName
+id etLoginMobile
+id etLoginOtpCode
 id etRegEmail
 id etRegFirstName
 id etRegLastName

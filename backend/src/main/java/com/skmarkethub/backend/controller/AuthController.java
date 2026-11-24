@@ -52,6 +52,21 @@ public class AuthController {
         return ResponseEntity.ok(authService.resetPassword(request));
     }
 
+    public record SendMobileOtpRequest(@jakarta.validation.constraints.NotBlank String mobile) {}
+    public record MobileOtpLoginRequest(@jakarta.validation.constraints.NotBlank String mobile, @jakarta.validation.constraints.NotBlank String otpCode, String firstName) {}
+
+    @PostMapping("/send-mobile-otp")
+    public ResponseEntity<Map<String, String>> sendMobileOtp(
+            @Valid @RequestBody SendMobileOtpRequest request) {
+        return ResponseEntity.ok(authService.sendMobileOtp(request.mobile()));
+    }
+
+    @PostMapping("/login-mobile-otp")
+    public ResponseEntity<AuthResponse> loginWithMobileOtp(
+            @Valid @RequestBody MobileOtpLoginRequest request) {
+        return ResponseEntity.ok(authService.loginWithMobileOtp(request.mobile(), request.otpCode(), request.firstName()));
+    }
+
     @GetMapping("/me")
     public ResponseEntity<?> getCurrentUser(@AuthenticationPrincipal Jwt jwt) {
         return userRepository.findByEmailIgnoreCase(jwt.getSubject())

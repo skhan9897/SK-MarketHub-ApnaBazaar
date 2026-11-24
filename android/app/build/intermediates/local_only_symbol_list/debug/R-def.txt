@@ -40,12 +40,14 @@ id btnRegSendOtp
 id btnRegister
 id btnRemoveCartItem
 id btnSellerAddProduct
+id btnSendMobileOtp
 id etAddressLine
 id etCatalogSearch
 id etCheckoutCoupon
 id etForgotEmail
-id etLoginEmail
-id etLoginPassword
+id etLoginFirstName
+id etLoginMobile
+id etLoginOtpCode
 id etRegEmail
 id etRegFirstName
 id etRegLastName

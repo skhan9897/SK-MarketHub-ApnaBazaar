@@ -24,10 +24,6 @@
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_orders.xml"
     },
     {
-        "merged": "com.sk.markethub.app-merged_res-37:/layout_fragment_catalog.xml.flat",
-        "source": "com.sk.markethub.app-main-39:/layout/fragment_catalog.xml"
-    },
-    {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_fragment_register.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_register.xml"
     },
@@ -86,6 +82,10 @@
     {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_activity_admin.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\activity_admin.xml"
+    },
+    {
+        "merged": "com.sk.markethub.app-merged_res-37:/layout_fragment_login.xml.flat",
+        "source": "com.sk.markethub.app-main-39:/layout/fragment_login.xml"
     },
     {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_item_product.xml.flat",

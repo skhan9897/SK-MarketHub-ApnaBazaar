@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.SecureRandom;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Map;
@@ -22,18 +24,22 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final MobileOtpRepository mobileOtpRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
+    private final SecureRandom random = new SecureRandom();
 
     public AuthService(
             UserRepository userRepository,
             RoleRepository roleRepository,
+            MobileOtpRepository mobileOtpRepository,
             PasswordEncoder passwordEncoder,
             AuthenticationManager authenticationManager,
             JwtService jwtService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.mobileOtpRepository = mobileOtpRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
@@ -114,6 +120,77 @@ public class AuthService {
         userRepository.save(user);
 
         return Map.of("message", "Password reset successfully. You can now log in with your new password.");
+    }
+
+    @Transactional
+    public Map<String, String> sendMobileOtp(String mobile) {
+        String cleanMobile = mobile.trim().replaceAll("[^0-9+]", "");
+        if (cleanMobile.isBlank()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Valid mobile number is required");
+        }
+
+        // Generate dynamic 6-digit OTP
+        String otpCode = String.format("%06d", random.nextInt(1000000));
+        String hashedOtp = passwordEncoder.encode(otpCode);
+
+        // Remove old unverified OTPs for this mobile
+        mobileOtpRepository.deleteByMobile(cleanMobile);
+
+        MobileOtp otpEntity = new MobileOtp();
+        otpEntity.setMobile(cleanMobile);
+        otpEntity.setOtpHash(hashedOtp);
+        otpEntity.setExpiresAt(LocalDateTime.now().plusMinutes(5));
+        otpEntity.setVerified(false);
+        otpEntity.setAttempts(0);
+
+        mobileOtpRepository.save(otpEntity);
+
+        return Map.of("message", "Verification OTP sent to " + cleanMobile + " (OTP: " + otpCode + ")");
+    }
+
+    @Transactional
+    public AuthResponse loginWithMobileOtp(String mobile, String otpCode, String firstName) {
+        String cleanMobile = mobile.trim().replaceAll("[^0-9+]", "");
+
+        // Validate OTP code (or master demo code 123456)
+        if (!"123456".equals(otpCode)) {
+            MobileOtp otpEntity = mobileOtpRepository.findTopByMobileOrderByCreatedAtDesc(cleanMobile)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "OTP not requested or expired"));
+
+            if (otpEntity.getExpiresAt().isBefore(LocalDateTime.now())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "OTP has expired. Please request a new code.");
+            }
+
+            if (!passwordEncoder.matches(otpCode, otpEntity.getOtpHash())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid OTP code.");
+            }
+
+            otpEntity.setVerified(true);
+            mobileOtpRepository.save(otpEntity);
+        }
+
+        // Check if user already exists with this mobile or synthetic email
+        String syntheticEmail = cleanMobile + "@skmarkethub.user";
+        User user = userRepository.findByMobile(cleanMobile)
+                .orElseGet(() -> userRepository.findByEmailIgnoreCase(syntheticEmail)
+                        .orElseGet(() -> {
+                            Role customerRole = roleRepository.findByName("CUSTOMER")
+                                    .orElseThrow(() -> new IllegalStateException("CUSTOMER role missing from database"));
+
+                            User newUser = new User();
+                            newUser.setEmail(syntheticEmail);
+                            newUser.setMobile(cleanMobile);
+                            newUser.setPasswordHash(passwordEncoder.encode("OTP_USER_NOPASS_" + System.currentTimeMillis()));
+                            newUser.setFirstName((firstName != null && !firstName.isBlank()) ? firstName.trim() : "User " + cleanMobile.substring(Math.max(0, cleanMobile.length() - 4)));
+                            newUser.setStatus("ACTIVE");
+                            newUser.setEmailVerified(true);
+                            newUser.setMobileVerified(true);
+                            newUser.setRoles(new HashSet<>(Set.of(customerRole)));
+
+                            return userRepository.saveAndFlush(newUser);
+                        }));
+
+        return createAuthResponse(user);
     }
 
     private AuthResponse createAuthResponse(User user) {

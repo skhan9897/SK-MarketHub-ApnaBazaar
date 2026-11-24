@@ -63,6 +63,14 @@ export const authService = {
   verifyOtp: async (email: string, otpCode: string) => {
     const res = await api.post('/auth/verify-otp', { email, otpCode });
     return res.data;
+  },
+  sendMobileOtp: async (mobile: string) => {
+    const res = await api.post('/auth/send-mobile-otp', { mobile });
+    return res.data;
+  },
+  loginWithMobileOtp: async (mobile: string, otpCode: string, firstName?: string): Promise<AuthResponse> => {
+    const res = await api.post<AuthResponse>('/auth/login-mobile-otp', { mobile, otpCode, firstName });
+    return res.data;
   }
 };
 
