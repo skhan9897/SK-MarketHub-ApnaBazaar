@@ -66,6 +66,13 @@ export const authService = {
   }
 };
 
+export const appService = {
+  getLatestRelease: async () => {
+    const res = await api.get('/app/latest');
+    return res.data;
+  }
+};
+
 export const catalogService = {
   getCategories: async (): Promise<Category[]> => {
     const res = await api.get<Category[]>('/categories');

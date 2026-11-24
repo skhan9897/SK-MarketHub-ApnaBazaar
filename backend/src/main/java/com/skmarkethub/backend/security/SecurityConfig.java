@@ -108,6 +108,7 @@ public class SecurityConfig {
                     "/api/auth/verify-otp").permitAll()
 
                 .requestMatchers(HttpMethod.GET,
+                    "/api/app/latest",
                     "/api/categories", "/api/categories/**",
                     "/api/brands", "/api/brands/**",
                     "/api/products", "/api/products/**").permitAll()

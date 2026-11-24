@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Heart, ShoppingCart, User as UserIcon, Shield, Store, LifeBuoy, LogOut, Search, Sparkles } from 'lucide-react';
+import { ShoppingBag, Heart, ShoppingCart, User as UserIcon, Shield, Store, LifeBuoy, LogOut, Search, Sparkles, Smartphone } from 'lucide-react';
 import type { User } from '../types';
 
 interface NavbarProps {
@@ -89,6 +89,26 @@ export const Navbar: React.FC<NavbarProps> = ({
             }}
           >
             Catalog
+          </button>
+
+          <button
+            onClick={() => setCurrentTab('download-app')}
+            style={{
+              background: currentTab === 'download-app' ? '#203653' : 'transparent',
+              border: 'none',
+              color: currentTab === 'download-app' ? '#E7B85C' : '#ffffff',
+              padding: '8px 14px',
+              borderRadius: '6px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: 600,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px'
+            }}
+          >
+            <Smartphone size={16} color="#E7B85C" />
+            <span>Android App</span>
           </button>
 
           {user && (

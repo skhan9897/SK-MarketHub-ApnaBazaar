@@ -33,6 +33,9 @@ public interface ApiService {
     @POST("auth/verify-otp")
     Call<Map<String, String>> verifyOtp(@Body Map<String, Object> body);
 
+    @GET("app/latest")
+    Call<Map<String, Object>> getLatestAppRelease();
+
     // Catalog
     @GET("categories")
     Call<List<Category>> getCategories();

@@ -8,6 +8,7 @@ import { CustomerOrdersPage } from './pages/CustomerOrdersPage';
 import { SellerDashboardPage } from './pages/SellerDashboardPage';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { SupportDashboardPage } from './pages/SupportDashboardPage';
+import { DownloadAppPage } from './pages/DownloadAppPage';
 import { authService, cartService, wishlistService } from './services/api';
 import type { User } from './types';
 import './App.css';
@@ -128,6 +129,7 @@ export function App() {
         {currentTab === 'seller' && <SellerDashboardPage />}
         {currentTab === 'admin' && <AdminDashboardPage />}
         {currentTab === 'support' && <SupportDashboardPage user={user} />}
+        {currentTab === 'download-app' && <DownloadAppPage />}
       </main>
     </div>
   );
