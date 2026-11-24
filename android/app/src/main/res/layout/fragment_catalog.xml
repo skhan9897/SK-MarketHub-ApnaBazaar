@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- Hero Promo Showcase Card -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,22 +23,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SHOP SMART. LIVE BETTER."
-                android:textColor="@color/accent"
-                android:textSize="12sp"
+                android:background="@color/accent"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="LIMITED TIME DEALS • UP TO 70% OFF"
+                android:textColor="@color/primary"
+                android:textSize="10sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Exclusive Marketplace Deals"
+                android:layout_marginTop="6dp"
+                android:text="Exclusive Marketplace Collection"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="SHOP SMART. LIVE BETTER."
+                android:textColor="@color/gold_soft"
+                android:textSize="11sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Search Input -->
     <EditText
         android:id="@+id/etCatalogSearch"
         android:layout_width="match_parent"

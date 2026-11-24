@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { catalogService, cartService, wishlistService } from '../services/api';
 import type { Category, Brand, Product, User } from '../types';
-import { ShoppingCart, Heart, Tag, Filter, ShoppingBag, ShieldCheck, Truck, Sparkles } from 'lucide-react';
+import { ShoppingCart, Heart, Tag, Filter, ShoppingBag, Sparkles, Flame, Zap, ChevronRight, Smartphone, Shirt, Home, Tv, Smile, Dumbbell } from 'lucide-react';
 import { ProductSkeleton } from '../components/Skeleton';
 
 interface CustomerCatalogProps {
@@ -26,6 +26,38 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
 
   const [loading, setLoading] = useState(false);
   const [addingProduct, setAddingProduct] = useState<number | null>(null);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  const heroBanners = [
+    {
+      title: "EXCLUSIVE MARKETPLACE COLLECTION",
+      subtitle: "Up to 70% OFF on Top Tech & Fashion Brands",
+      badge: "LIMITED TIME DEALS",
+      buttonText: "SHOP NEW ARRIVALS"
+    },
+    {
+      title: "NEXT-GEN SMARTPHONES & ACCESSORIES",
+      subtitle: "Verified Official Sellers | Free Express Shipping",
+      badge: "FESTIVE SALE LIVE",
+      buttonText: "EXPLORE GADGETS"
+    },
+    {
+      title: "ELEVATE YOUR WARDROBE & HOME",
+      subtitle: "Premium Quality Guaranteed | Easy 7-Day Returns",
+      badge: "TRENDING LIFESTYLE",
+      buttonText: "DISCOVER LIFESTYLE"
+    }
+  ];
+
+  const categoryIcons = [
+    { name: 'All Products', id: undefined, icon: Sparkles },
+    { name: 'Electronics', id: 1, icon: Smartphone },
+    { name: 'Fashion', id: 2, icon: Shirt },
+    { name: 'Home & Living', id: 3, icon: Home },
+    { name: 'Appliances', id: 4, icon: Tv },
+    { name: 'Beauty', id: 5, icon: Smile },
+    { name: 'Sports', id: 6, icon: Dumbbell }
+  ];
 
   useEffect(() => {
     loadCategoriesAndBrands();
@@ -34,6 +66,13 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
   useEffect(() => {
     loadProducts();
   }, [searchQuery, selectedCategory, selectedBrand]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroBanners.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const loadCategoriesAndBrands = async () => {
     try {
@@ -91,56 +130,122 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
   };
 
   return (
-    <div style={{ backgroundColor: '#F8F7F3', minHeight: '100vh', paddingBottom: '40px' }}>
+    <div style={{ backgroundColor: '#F8F7F3', minHeight: '100vh', paddingBottom: '60px' }}>
 
-      {/* Hero Banner */}
+      {/* Top Horizontal Category Icon Bar */}
+      <div style={{ backgroundColor: '#ffffff', borderBottom: '1px solid #e2e8f0', boxShadow: '0 2px 8px rgba(0,0,0,0.03)', padding: '12px 16px', marginBottom: '20px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', gap: '16px', overflowX: 'auto', paddingBottom: '4px', alignItems: 'center' }}>
+          {categoryIcons.map((item, idx) => {
+            const Icon = item.icon;
+            const isSelected = selectedCategory === item.id;
+
+            return (
+              <button
+                key={idx}
+                onClick={() => setSelectedCategory(item.id)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 16px',
+                  borderRadius: '20px',
+                  border: isSelected ? '2px solid #E7B85C' : '1px solid #e2e8f0',
+                  backgroundColor: isSelected ? '#14243C' : '#f8fafc',
+                  color: isSelected ? '#E7B85C' : '#334155',
+                  fontWeight: 700,
+                  fontSize: '13px',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                  boxShadow: isSelected ? '0 2px 8px rgba(231,184,92,0.3)' : 'none',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                <Icon size={16} color={isSelected ? '#E7B85C' : '#14243C'} />
+                <span>{item.name}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Hero Showcase Banner Carousel */}
       {!searchQuery && !selectedCategory && !selectedBrand && (
-        <div style={{ backgroundColor: '#14243C', color: '#ffffff', padding: '40px 24px', marginBottom: '32px', borderBottom: '4px solid #E7B85C' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-            <div style={{ maxWidth: '600px' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#203653', color: '#E7B85C', padding: '4px 12px', borderRadius: '20px', fontSize: '12px', fontWeight: 700, marginBottom: '16px' }}>
-                <Sparkles size={14} /> PREMIUM SELECTION
+        <div style={{ maxWidth: '1280px', margin: '0 auto 28px auto', padding: '0 16px' }}>
+          <div style={{ backgroundColor: '#14243C', color: '#ffffff', borderRadius: '16px', padding: '40px', position: 'relative', overflow: 'hidden', borderBottom: '4px solid #E7B85C', boxShadow: '0 4px 20px rgba(0,0,0,0.12)' }}>
+
+            {/* Background Radial Glow */}
+            <div style={{ position: 'absolute', right: '-50px', top: '-50px', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(231,184,92,0.2) 0%, rgba(20,36,60,0) 70%)', pointerEvents: 'none' }} />
+
+            <div style={{ maxWidth: '650px', position: 'relative', zIndex: 2 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: '#203653', color: '#E7B85C', padding: '4px 12px', borderRadius: '20px', fontSize: '11px', fontWeight: 800, marginBottom: '16px', letterSpacing: '1px' }}>
+                <Flame size={14} /> {heroBanners[heroIndex].badge}
               </div>
-              <h1 style={{ fontSize: '32px', fontWeight: 800, margin: '0 0 12px 0', letterSpacing: '0.5px' }}>SHOP SMART. LIVE BETTER.</h1>
-              <p style={{ fontSize: '16px', color: '#94a3b8', margin: '0 0 24px 0', lineHeight: 1.5 }}>
-                Discover verified products from official sellers with fast express delivery and seamless payment protection.
+              <h1 style={{ fontSize: '32px', fontWeight: 800, margin: '0 0 12px 0', letterSpacing: '0.5px', lineHeight: 1.2 }}>
+                {heroBanners[heroIndex].title}
+              </h1>
+              <p style={{ fontSize: '16px', color: '#B9C2D1', margin: '0 0 24px 0' }}>
+                {heroBanners[heroIndex].subtitle}
               </p>
+
+              <button
+                onClick={() => window.scrollTo({ top: 400, behavior: 'smooth' })}
+                style={{
+                  backgroundColor: '#E7B85C',
+                  color: '#14243C',
+                  border: 'none',
+                  padding: '12px 24px',
+                  borderRadius: '8px',
+                  fontWeight: 800,
+                  fontSize: '14px',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 12px rgba(231,184,92,0.4)'
+                }}
+              >
+                <span>{heroBanners[heroIndex].buttonText}</span>
+                <ChevronRight size={16} />
+              </button>
             </div>
 
-            {/* Trust Badges Bar */}
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-              <div style={{ backgroundColor: '#203653', padding: '16px 20px', borderRadius: '12px', border: '1px solid #2d476c', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <Truck size={28} color="#E7B85C" />
-                <div>
-                  <div style={{ fontSize: '14px', fontWeight: 700 }}>Express Shipping</div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8' }}>Fast delivery to your door</div>
-                </div>
-              </div>
-              <div style={{ backgroundColor: '#203653', padding: '16px 20px', borderRadius: '12px', border: '1px solid #2d476c', display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <ShieldCheck size={28} color="#E7B85C" />
-                <div>
-                  <div style={{ fontSize: '14px', fontWeight: 700 }}>100% Genuine</div>
-                  <div style={{ fontSize: '11px', color: '#94a3b8' }}>Verified official sellers</div>
-                </div>
-              </div>
+            {/* Banner Indicator Dots */}
+            <div style={{ position: 'absolute', bottom: '16px', right: '24px', display: 'flex', gap: '6px' }}>
+              {heroBanners.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => setHeroIndex(i)}
+                  style={{
+                    width: i === heroIndex ? '20px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    backgroundColor: i === heroIndex ? '#E7B85C' : '#203653',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                />
+              ))}
             </div>
+
           </div>
         </div>
       )}
 
+      {/* Main Content Area */}
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px', display: 'flex', gap: '24px' }}>
 
         {/* Sidebar Filters */}
-        <div style={{ width: '260px', flexShrink: 0, backgroundColor: '#ffffff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', alignSelf: 'flex-start' }}>
+        <div style={{ width: '250px', flexShrink: 0, backgroundColor: '#ffffff', padding: '20px', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', alignSelf: 'flex-start', border: '1px solid #e2e8f0' }}>
+
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', borderBottom: '1px solid #e2e8f0', paddingBottom: '12px', marginBottom: '16px' }}>
             <Filter size={18} color="#14243C" />
-            <h3 style={{ fontSize: '16px', fontWeight: 700, margin: 0, color: '#14243C' }}>Filters</h3>
+            <h3 style={{ fontSize: '15px', fontWeight: 800, margin: 0, color: '#14243C' }}>Filters</h3>
           </div>
 
           {/* Categories */}
           <div style={{ marginBottom: '20px' }}>
-            <h4 style={{ fontSize: '14px', fontWeight: 700, color: '#202938', marginBottom: '10px' }}>Categories</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#202938', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Categories</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <button
                 onClick={() => setSelectedCategory(undefined)}
                 style={{
@@ -181,8 +286,8 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
 
           {/* Brands */}
           <div>
-            <h4 style={{ fontSize: '14px', fontWeight: 700, color: '#202938', marginBottom: '10px' }}>Brands</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <h4 style={{ fontSize: '13px', fontWeight: 700, color: '#202938', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Brands</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <button
                 onClick={() => setSelectedBrand(undefined)}
                 style={{
@@ -222,12 +327,20 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
           </div>
         </div>
 
-        {/* Main Product Grid */}
+        {/* Product Grid Area */}
         <div style={{ flex: 1 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-            <h2 style={{ fontSize: '20px', fontWeight: 800, margin: 0, color: '#14243C' }}>
-              Products Catalog ({products.length})
-            </h2>
+
+          {/* Section Header */}
+          <div style={{ backgroundColor: '#ffffff', padding: '16px 20px', borderRadius: '12px', border: '1px solid #e2e8f0', marginBottom: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Zap size={20} color="#E7B85C" />
+              <h2 style={{ fontSize: '18px', fontWeight: 800, margin: 0, color: '#14243C' }}>
+                Deals of the Day ({products.length})
+              </h2>
+            </div>
+            <span style={{ fontSize: '12px', fontWeight: 700, color: '#23865B', backgroundColor: '#ecfdf5', padding: '4px 10px', borderRadius: '12px' }}>
+              Verified Inventory
+            </span>
           </div>
 
           {loading ? (
@@ -238,7 +351,7 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
             <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#ffffff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
               <Tag size={40} color="#cbd5e1" style={{ marginBottom: '12px' }} />
               <h3 style={{ fontSize: '16px', color: '#202938', margin: 0 }}>No products found</h3>
-              <p style={{ fontSize: '13px', color: '#697386' }}>Try adjusting your search terms or filters.</p>
+              <p style={{ fontSize: '13px', color: '#697386' }}>Try adjusting your search terms or category filters.</p>
             </div>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(230px, 1fr))', gap: '20px' }}>
@@ -262,12 +375,14 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                       border: '1px solid #f1f5f9'
                     }}
                   >
+                    {/* Discount Badge */}
                     {hasDiscount && (
-                      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#E7B85C', color: '#14243C', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '12px', letterSpacing: '0.5px' }}>
+                      <div style={{ position: 'absolute', top: '12px', left: '12px', backgroundColor: '#E7B85C', color: '#14243C', fontSize: '10px', fontWeight: 800, padding: '3px 8px', borderRadius: '12px', letterSpacing: '0.5px', boxShadow: '0 2px 6px rgba(231,184,92,0.4)' }}>
                         {discountPercent}% OFF
                       </div>
                     )}
 
+                    {/* Wishlist Heart */}
                     <button
                       onClick={() => handleToggleWishlist(p)}
                       title="Add to Wishlist"
@@ -286,10 +401,12 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                       <Heart size={16} color="#D94B4B" />
                     </button>
 
+                    {/* Image Container */}
                     <div style={{ width: '100%', height: '140px', backgroundColor: '#f8fafc', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
                       <ShoppingBag size={48} color="#cbd5e1" />
                     </div>
 
+                    {/* Product Info */}
                     <div>
                       <span style={{ fontSize: '10px', fontWeight: 800, color: '#E7B85C', textTransform: 'uppercase', letterSpacing: '0.5px', backgroundColor: '#14243C', padding: '2px 6px', borderRadius: '4px' }}>SKU: {p.sku}</span>
                       <h3 style={{ fontSize: '15px', fontWeight: 700, color: '#202938', margin: '8px 0 8px 0', height: '40px', overflow: 'hidden' }}>{p.name}</h3>
@@ -302,6 +419,7 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                       </div>
                     </div>
 
+                    {/* Add to Cart CTA */}
                     <button
                       onClick={() => handleAddToCart(p)}
                       disabled={addingProduct === p.id}
