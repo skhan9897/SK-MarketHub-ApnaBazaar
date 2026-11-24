@@ -3005,6 +3005,7 @@ drawable ic_arrow_back_black_24
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
+drawable ic_launcher_sk_markethub
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3199,6 +3200,7 @@ id btnPortalLogout
 id btnPortalSeller
 id btnPortalSupport
 id btnProceedCheckout
+id btnRegSendOtp
 id btnRegister
 id btnRemoveCartItem
 id btnSellerAddProduct
@@ -3292,6 +3294,7 @@ id etRegEmail
 id etRegFirstName
 id etRegLastName
 id etRegMobile
+id etRegOtpCode
 id etRegPassword
 id etResetPassword
 id etSellerBusinessName
@@ -3594,6 +3597,7 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id tilRegOtpCode
 id tilResetPassword
 id time
 id title

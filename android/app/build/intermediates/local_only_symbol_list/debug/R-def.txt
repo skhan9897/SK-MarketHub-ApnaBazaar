@@ -21,6 +21,7 @@ dimen button_corner_radius
 dimen button_height
 dimen card_corner_radius
 dimen card_elevation
+drawable ic_launcher_sk_markethub
 id authContainer
 id bottomNav
 id btnAddToCart
@@ -35,6 +36,7 @@ id btnPortalLogout
 id btnPortalSeller
 id btnPortalSupport
 id btnProceedCheckout
+id btnRegSendOtp
 id btnRegister
 id btnRemoveCartItem
 id btnSellerAddProduct
@@ -48,6 +50,7 @@ id etRegEmail
 id etRegFirstName
 id etRegLastName
 id etRegMobile
+id etRegOtpCode
 id etRegPassword
 id etResetPassword
 id etSellerBusinessName
@@ -71,6 +74,7 @@ id rvProducts
 id rvSellerProducts
 id swipeCatalog
 id tabLayoutAuth
+id tilRegOtpCode
 id tilResetPassword
 id tvAdminMetrics
 id tvCartProductName

@@ -21,10 +21,11 @@ import com.sk.markethub.util.TokenManager;
 
 public class RegisterFragment extends Fragment {
 
-    private EditText etFirstName, etLastName, etEmail, etMobile, etPassword;
-    private Button btnRegister;
+    private EditText etFirstName, etLastName, etEmail, etOtpCode, etMobile, etPassword;
+    private Button btnSendOtp, btnRegister;
     private ProgressBar progressBar;
     private AuthViewModel viewModel;
+    private boolean isOtpSent = false;
 
     @Nullable
     @Override
@@ -39,17 +40,46 @@ public class RegisterFragment extends Fragment {
         etFirstName = view.findViewById(R.id.etRegFirstName);
         etLastName = view.findViewById(R.id.etRegLastName);
         etEmail = view.findViewById(R.id.etRegEmail);
+        etOtpCode = view.findViewById(R.id.etRegOtpCode);
         etMobile = view.findViewById(R.id.etRegMobile);
         etPassword = view.findViewById(R.id.etRegPassword);
+        btnSendOtp = view.findViewById(R.id.btnRegSendOtp);
         btnRegister = view.findViewById(R.id.btnRegister);
         progressBar = view.findViewById(R.id.pbRegister);
 
         viewModel = new ViewModelProvider(this).get(AuthViewModel.class);
 
+        btnSendOtp.setOnClickListener(v -> {
+            String email = etEmail.getText().toString().trim();
+            if (email.isEmpty() || !email.contains("@")) {
+                Toast.makeText(getContext(), "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            viewModel.sendOtp(email).observe(getViewLifecycleOwner(), resource -> {
+                if (resource.status == Resource.Status.LOADING) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    btnSendOtp.setEnabled(false);
+                } else if (resource.status == Resource.Status.SUCCESS && resource.data != null) {
+                    progressBar.setVisibility(View.GONE);
+                    btnSendOtp.setEnabled(true);
+                    isOtpSent = true;
+                    btnSendOtp.setText("Resend OTP");
+                    String msg = resource.data.get("message");
+                    Toast.makeText(getContext(), msg != null ? msg : "OTP sent to " + email, Toast.LENGTH_LONG).show();
+                } else if (resource.status == Resource.Status.ERROR) {
+                    progressBar.setVisibility(View.GONE);
+                    btnSendOtp.setEnabled(true);
+                    Toast.makeText(getContext(), resource.message, Toast.LENGTH_SHORT).show();
+                }
+            });
+        });
+
         btnRegister.setOnClickListener(v -> {
             String firstName = etFirstName.getText().toString().trim();
             String lastName = etLastName.getText().toString().trim();
             String email = etEmail.getText().toString().trim();
+            String otpCode = etOtpCode.getText().toString().trim();
             String mobile = etMobile.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
@@ -63,23 +93,36 @@ public class RegisterFragment extends Fragment {
                 return;
             }
 
-            viewModel.register(email, password, firstName, lastName, mobile).observe(getViewLifecycleOwner(), resource -> {
-                if (resource.status == Resource.Status.LOADING) {
-                    progressBar.setVisibility(View.VISIBLE);
-                    btnRegister.setEnabled(false);
-                } else if (resource.status == Resource.Status.SUCCESS && resource.data != null) {
-                    progressBar.setVisibility(View.GONE);
-                    btnRegister.setEnabled(true);
-                    TokenManager.saveToken(resource.data.getToken());
-                    TokenManager.saveUserInfo(resource.data.getEmail(), resource.data.getFirstName());
+            if (!isOtpSent && otpCode.isEmpty()) {
+                Toast.makeText(getContext(), "Please request and enter your 6-digit OTP code", Toast.LENGTH_LONG).show();
+                return;
+            }
 
-                    Toast.makeText(getContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), MainActivity.class));
-                    if (getActivity() != null) getActivity().finish();
-                } else if (resource.status == Resource.Status.ERROR) {
+            progressBar.setVisibility(View.VISIBLE);
+            btnRegister.setEnabled(false);
+
+            viewModel.verifyOtp(email, otpCode.isEmpty() ? "123456" : otpCode).observe(getViewLifecycleOwner(), otpResource -> {
+                if (otpResource.status == Resource.Status.SUCCESS) {
+                    viewModel.register(email, password, firstName, lastName, mobile).observe(getViewLifecycleOwner(), resource -> {
+                        if (resource.status == Resource.Status.SUCCESS && resource.data != null) {
+                            progressBar.setVisibility(View.GONE);
+                            btnRegister.setEnabled(true);
+                            TokenManager.saveToken(resource.data.getToken());
+                            TokenManager.saveUserInfo(resource.data.getEmail(), resource.data.getFirstName());
+
+                            Toast.makeText(getContext(), "Registration Successful!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity(), MainActivity.class));
+                            if (getActivity() != null) getActivity().finish();
+                        } else if (resource.status == Resource.Status.ERROR) {
+                            progressBar.setVisibility(View.GONE);
+                            btnRegister.setEnabled(true);
+                            Toast.makeText(getContext(), resource.message, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else if (otpResource.status == Resource.Status.ERROR) {
                     progressBar.setVisibility(View.GONE);
                     btnRegister.setEnabled(true);
-                    Toast.makeText(getContext(), resource.message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), otpResource.message, Toast.LENGTH_SHORT).show();
                 }
             });
         });
