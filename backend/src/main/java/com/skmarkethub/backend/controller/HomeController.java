@@ -9,7 +9,7 @@ import java.util.Map;
 @RestController
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/api/status")
     public ResponseEntity<Map<String, Object>> root() {
         return ResponseEntity.ok(Map.of(
                 "status", "UP",
