@@ -3,7 +3,6 @@ package com.sk.markethub.ui.main;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -24,7 +23,14 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
-    private final int LOCAL_VERSION_CODE = 1;
+
+    private int getLocalVersionCode() {
+        try {
+            return getPackageManager().getPackageInfo(getPackageName(), 0).versionCode;
+        } catch (Exception e) {
+            return 1;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +72,17 @@ public class MainActivity extends AppCompatActivity {
                     int serverVersionCode = serverVersionCodeNum != null ? serverVersionCodeNum.intValue() : 1;
                     String versionName = (String) data.get("latestVersionName");
                     String releaseNotes = (String) data.get("releaseNotes");
+                    String downloadUrl = (String) data.get("downloadUrl");
 
-                    if (serverVersionCode > LOCAL_VERSION_CODE) {
+                    int localVersionCode = getLocalVersionCode();
+
+                    if (serverVersionCode > localVersionCode) {
                         new AlertDialog.Builder(MainActivity.this)
                                 .setTitle("Update Available: v" + versionName)
                                 .setMessage(releaseNotes != null ? releaseNotes : "A new version of SK-MarketHub is available!")
                                 .setPositiveButton("Update Now", (dialog, which) -> {
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://sk-markethub-apnabazaar.onrender.com/download-app"));
+                                    String targetUrl = (downloadUrl != null && !downloadUrl.isBlank()) ? downloadUrl : "https://sk-markethub-apnabazaar.onrender.com/download-app";
+                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(targetUrl));
                                     startActivity(intent);
                                 })
                                 .setNegativeButton("Later", null)
