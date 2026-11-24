@@ -27,9 +27,9 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: prod
       - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://skmarkethub-prod-db:3306/sk_markethub_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+        sync: false
       - key: SPRING_DATASOURCE_USERNAME
-        value: skmarket
+        sync: false
       - key: SPRING_DATASOURCE_PASSWORD
         sync: false
       - key: JWT_SECRET
