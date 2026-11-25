@@ -59,6 +59,17 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
     { name: 'Sports', id: 6, icon: Dumbbell }
   ];
 
+  const productImageMap: Record<number, string> = {
+    100: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&auto=format&fit=crop&q=80',
+    101: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&auto=format&fit=crop&q=80',
+    102: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80',
+    103: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=600&auto=format&fit=crop&q=80',
+    104: 'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=600&auto=format&fit=crop&q=80',
+    105: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&auto=format&fit=crop&q=80',
+    106: 'https://images.unsplash.com/photo-1580481072645-022f9a6d1270?w=600&auto=format&fit=crop&q=80',
+    107: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format&fit=crop&q=80'
+  };
+
   useEffect(() => {
     loadCategoriesAndBrands();
   }, []);
@@ -400,8 +411,12 @@ export const CustomerCatalog: React.FC<CustomerCatalogProps> = ({
                     </button>
 
                     {/* Image Container */}
-                    <div style={{ width: '100%', height: '140px', backgroundColor: '#f8fafc', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px' }}>
-                      <ShoppingBag size={48} color="#cbd5e1" />
+                    <div style={{ width: '100%', height: '160px', backgroundColor: '#ffffff', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px', overflow: 'hidden' }}>
+                      {productImageMap[p.id] ? (
+                        <img src={productImageMap[p.id]} alt={p.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      ) : (
+                        <ShoppingBag size={48} color="#cbd5e1" />
+                      )}
                     </div>
 
                     {/* Product Info */}

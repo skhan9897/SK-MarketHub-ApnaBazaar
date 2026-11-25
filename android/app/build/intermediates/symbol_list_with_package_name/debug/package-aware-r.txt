@@ -3168,6 +3168,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appHeaderToolbar
 id arc
 id asConfigured
 id async
@@ -3190,6 +3191,13 @@ id bounceEnd
 id bounceStart
 id btnAddToCart
 id btnApplySeller
+id btnCatAll
+id btnCatAppliances
+id btnCatBeauty
+id btnCatElectronics
+id btnCatFashion
+id btnCatHome
+id btnCatSports
 id btnCreateTicket
 id btnDetailAddToCart
 id btnForgotPassword

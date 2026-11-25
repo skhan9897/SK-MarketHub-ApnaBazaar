@@ -1,15 +1,19 @@
 [
     {
-        "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_fragment_cart.xml.flat",
-        "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_cart.xml"
-    },
-    {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_activity_splash.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\activity_splash.xml"
     },
     {
+        "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_fragment_cart.xml.flat",
+        "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_cart.xml"
+    },
+    {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "com.sk.markethub.app-merged_res-37:/layout_fragment_catalog.xml.flat",
+        "source": "com.sk.markethub.app-main-39:/layout/fragment_catalog.xml"
     },
     {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_fragment_register.xml.flat",
@@ -56,10 +60,6 @@
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_orders.xml"
     },
     {
-        "merged": "com.sk.markethub.app-merged_res-37:/layout_activity_splash.xml.flat",
-        "source": "com.sk.markethub.app-main-39:/layout/activity_splash.xml"
-    },
-    {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_fragment_seller_apply.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\fragment_seller_apply.xml"
     },
@@ -74,6 +74,10 @@
     {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_skeleton_product.xml.flat",
         "source": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-main-39:\\layout\\skeleton_product.xml"
+    },
+    {
+        "merged": "com.sk.markethub.app-merged_res-37:/layout_activity_main.xml.flat",
+        "source": "com.sk.markethub.app-main-39:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Sajid Khan\\.gradle\\daemon\\8.5\\com.sk.markethub.app-merged_res-37:\\layout_activity_auth.xml.flat",
