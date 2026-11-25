@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background Circle -->
+    <path
+        android:fillColor="#080B14"
+        android:pathData="M54,0C24.18,0 0,24.18 0,54C0,83.82 24.18,108 54,108C83.82,108 108,83.82 108,54C108,24.18 83.82,0 54,0Z" />
+
+    <!-- Outer Gold Ring -->
+    <path
+        android:strokeColor="#D4AF37"
+        android:strokeWidth="3"
+        android:pathData="M54,6C27.49,6 6,27.49 6,54C6,80.51 27.49,102 54,102C80.51,102 102,80.51 102,54C102,27.49 80.51,6 54,6Z" />
+
+    <!-- Inner Navy Shield -->
+    <path
+        android:fillColor="#101B35"
+        android:pathData="M54,14C31.91,14 14,31.91 14,54C14,76.09 31.91,94 54,94C76.09,94 94,76.09 94,54C94,31.91 76.09,14 54,14Z" />
+
+    <!-- Shopping Bag Handle (Gold) -->
+    <path
+        android:strokeColor="#E7B85C"
+        android:strokeWidth="4"
+        android:strokeLineCap="round"
+        android:pathData="M44,40 C44,32 64,32 64,40" />
+
+    <!-- Shopping Bag Body (Gold) -->
+    <path
+        android:fillColor="#E7B85C"
+        android:pathData="M34,38 L74,38 L78,74 C78,77 75,80 72,80 L36,80 C33,80 30,77 30,74 Z" />
+
+    <!-- Inner Navy Monogram "SK" -->
+    <path
+        android:fillColor="#080B14"
+        android:pathData="M40,48 L46,48 C48,48 49,49 49,51 C49,53 47,54 45,54 L42,54 L47,62 L43,62 L39,54 L39,62 L37,62 L37,48 Z M53,48 L56,48 L56,53 L62,48 L65,48 L60,53 L66,62 L63,62 L58,55 L56,57 L56,62 L53,62 Z" />
+
+</vector>
